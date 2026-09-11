@@ -1,0 +1,3 @@
+export default function EmployeeTable({ employees=[], onEdit, onDeactivate }) {
+  return <div className="table-wrap"><table><thead><tr><th>Name</th><th>Email</th><th>Code</th><th>Department</th><th>Status</th><th /></tr></thead><tbody>{employees.map(e=><tr key={e._id}><td>{e.user?.name}</td><td>{e.user?.email}</td><td>{e.employeeCode}</td><td>{e.department}</td><td>{e.isActive?"Active":"Inactive"}</td><td className="actions">{e.isActive&&<><button className="link-button" onClick={()=>onEdit(e)}>View</button><button className="link-button danger-text" onClick={()=>onDeactivate(e)}>Deactivate</button></>}</td></tr>)}</tbody></table></div>;
+}

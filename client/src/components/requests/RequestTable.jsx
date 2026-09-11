@@ -1,0 +1,4 @@
+import { formatDate } from "../../utils/formatters.js";
+import VisitorStatusBadge from "../visitors/VisitorStatusBadge.jsx";
+import Button from "../common/Button.jsx";
+export default function RequestTable({ requests=[], onApprove, onReject }) { return <div className="table-wrap"><table><thead><tr><th>Visitor</th><th>Date</th><th>Arrival</th><th>Purpose</th><th>Status</th><th>Actions</th></tr></thead><tbody>{requests.map(r=><tr key={r._id}><td><strong>{r.visitor?.fullName}</strong><small>{r.visitor?.phone}</small></td><td>{formatDate(r.visitDate)}</td><td>{r.expectedArrivalTime}</td><td>{r.purpose}</td><td><VisitorStatusBadge status={r.status}/></td><td className="actions"><Button onClick={()=>onApprove(r)}>Approve</Button><Button variant="danger" onClick={()=>onReject(r)}>Reject</Button></td></tr>)}</tbody></table></div>; }
