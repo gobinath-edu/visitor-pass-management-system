@@ -1,0 +1,11 @@
+services:
+  mongodb:
+    image: mongo:8
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - visitor-mongo:/data/db
+
+volumes:
+  visitor-mongo:
